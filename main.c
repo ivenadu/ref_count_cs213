@@ -23,5 +23,5 @@ void foo() {
 
 int main(){
     foo();
-    printf("%d ", *(int*)((void*)y - 8) );
+    printf("reference count = [%d]\n", *(int*)((void*)y - 8) );
 }
