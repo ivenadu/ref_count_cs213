@@ -14,14 +14,23 @@ int* y = NULL;
 int* z = NULL;
 
 void foo() {
- int* a = rc_malloc(100);
+    printf("foo() >> enter\n");
+    int* a = rc_malloc(100);
+    printf("object address pointed by a = [%p]\n", a);
+    
     x = a;
     y = a;
     z = x;
     w = x;   
+    printf("object address pointed by y = [%p]\n", y);
+    printf("foo() << leave \n");
+
 }
 
 int main(){
     foo();
-    printf("reference count = [%d]\n", *(int*)((void*)y - 8) );
+    
+    printf("We are now outside of foo()\n\n");
+    printf("object address pointed by y = [%p]\n", y);
+    printf("reference count = [%d]\n", *(int*)((void*)y - 8));
 }
